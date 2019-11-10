@@ -33,8 +33,14 @@ public class MainActivity extends AppCompatActivity {
             Student s = students.get(i);
             LayoutInflater inflater = LayoutInflater.from(this);
             View row_view = inflater.inflate(R.layout.student_row, root, false);
-            TextView nameView = row_view.findViewById(R.id.first_name);
-            nameView.setText(s.getFirstName() + " " + s.getLastName());
+            TextView fNameView = row_view.findViewById(R.id.first_name);
+            fNameView.setText(s.getFirstName());
+            fNameView.setTextSize(16);
+
+            TextView lNameView = row_view.findViewById(R.id.last_name);
+            lNameView.setText(s.getLastName());
+            lNameView.setTextSize(16);
+
             root.addView(row_view);
         }
 
@@ -51,6 +57,20 @@ public class MainActivity extends AppCompatActivity {
         studentList.add(s);
 
         s = new Student("Kyle", "Kuzma", 196340);
+        courses = new ArrayList<>();
+        courses.add(new CourseEnrollment("CPSC 481", "C"));
+        courses.add(new CourseEnrollment("CPSC 420", "B"));
+        s.setCourses(courses);
+        studentList.add(s);
+
+        s = new Student("LeBron", "James", 196340);
+        courses = new ArrayList<>();
+        courses.add(new CourseEnrollment("CPSC 481", "C"));
+        courses.add(new CourseEnrollment("CPSC 420", "B"));
+        s.setCourses(courses);
+        studentList.add(s);
+
+        s = new Student("Ashy", "Larry", 196340);
         courses = new ArrayList<>();
         courses.add(new CourseEnrollment("CPSC 481", "C"));
         courses.add(new CourseEnrollment("CPSC 420", "B"));
