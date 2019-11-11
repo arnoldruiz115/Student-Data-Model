@@ -14,6 +14,8 @@ import com.example.studentdata.model.StudentDB;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 
 public class StudentAdapter extends BaseAdapter {
     @Override
@@ -32,7 +34,7 @@ public class StudentAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, final View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final View row_view;
         if (convertView == null){
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -59,4 +61,5 @@ public class StudentAdapter extends BaseAdapter {
 
         return row_view;
     }
+
 }

@@ -39,8 +39,6 @@ public class StudentDetail extends AppCompatActivity {
 
         ArrayList<CourseEnrollment> ce = student.getCourses();
 
-        //CourseAdapter ca = new CourseAdapter();
-        //root.setAdapter(ca);
 
         for (int i = 0; i < ce.size(); i++){
             LayoutInflater inflater = LayoutInflater.from(this);
