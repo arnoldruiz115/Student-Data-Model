@@ -1,10 +1,12 @@
 package com.example.studentdata;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         root = findViewById(R.id.List_ViewID);
         StudentAdapter sa = new StudentAdapter();
         root.setAdapter(sa);
+
+        Button addStudentButton = findViewById(R.id.add_button_id);
+        addStudentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AddStudentActivity.class);
+                v.getContext().startActivity(intent);
+                v.invalidate();
+            }
+        });
     }
 
     protected void createStudentObjects(){

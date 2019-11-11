@@ -22,11 +22,6 @@
         android:layout_height="wrap_content"
         android:text="CWID"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Course"/>
-
     <LinearLayout
         android:id="@+id/classes_layout_id"
         android:orientation="vertical"
