@@ -12,9 +12,6 @@ import com.example.studentdata.StudentDetail;
 import com.example.studentdata.model.Student;
 import com.example.studentdata.model.StudentDB;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 
 public class StudentAdapter extends BaseAdapter {

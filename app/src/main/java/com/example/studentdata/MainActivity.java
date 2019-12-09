@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddStudentActivity.class);
                 v.getContext().startActivity(intent);
+                v.invalidate();
             }
         });
     }
