@@ -1,5 +1,6 @@
 package com.example.studentdata.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +16,23 @@ import com.example.studentdata.model.StudentDB;
 
 
 public class StudentAdapter extends BaseAdapter {
+
+    StudentDB studentDB;
+
+    public StudentAdapter(Context context){
+        studentDB = new StudentDB(context);
+        studentDB.retrieveStudentObjects();
+    }
+
     @Override
     public int getCount() {
-        return StudentDB.getInstance().getStudents().size();
+        return studentDB.getStudents().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return StudentDB.getInstance().getStudents().get(position);
+        //return StudentDB.getInstance().getStudents().get(position);
+        return studentDB.getStudents().get(position);
     }
 
     @Override
@@ -39,7 +49,8 @@ public class StudentAdapter extends BaseAdapter {
         }
         else row_view = convertView;
 
-        final Student student = StudentDB.getInstance().getStudents().get(position);
+        //final Student student = StudentDB.getInstance().getStudents().get(position);
+        Student student = studentDB.getStudents().get(position);
 
         TextView fName = row_view.findViewById(R.id.first_name);
         fName.setText(student.getFirstName());

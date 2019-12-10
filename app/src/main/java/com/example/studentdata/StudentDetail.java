@@ -27,11 +27,14 @@ public class StudentDetail extends AppCompatActivity {
         root = findViewById(R.id.classes_layout_id);
 
         studentIndex = getIntent().getIntExtra("StudentIndex", 0);
+
         TextView fName = findViewById(R.id.first_name_detail);
         TextView lName = findViewById(R.id.last_name_detail);
         TextView CWID = findViewById(R.id.CWID);
 
-        Student student = StudentDB.getInstance().getStudents().get(studentIndex);
+        //Get reference to database
+        //Student student = StudentDB.getInstance().getStudents().get(studentIndex);
+        Student student = new StudentDB(this).getStudents().get(studentIndex);
 
         fName.setText("First Name: " + student.getFirstName());
         lName.setText("Last Name: " + student.getLastName());

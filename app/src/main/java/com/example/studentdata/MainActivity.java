@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         root = findViewById(R.id.List_ViewID);
-        sa = new StudentAdapter();
+        sa = new StudentAdapter(this);
         root.setAdapter(sa);
 
         Button addStudentButton = findViewById(R.id.add_button_id);
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 v.invalidate();
             }
         });
+        ViewGroup vg = findViewById(R.id.student_summary);
+        vg.invalidate();
+
     }
 
 }

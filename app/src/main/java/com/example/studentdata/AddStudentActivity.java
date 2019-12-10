@@ -29,6 +29,7 @@ public class AddStudentActivity extends AppCompatActivity {
     protected ArrayList<Integer> courseEntryIDs = new ArrayList<>();
     protected ArrayList<Integer> gradeEntryIDs = new ArrayList<>();
 
+
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class AddStudentActivity extends AppCompatActivity {
         done_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Student> currentList = StudentDB.getInstance().getStudents();
+                //ArrayList<Student> currentList = StudentDB.getInstance().getStudents();
 
 
                 EditText editF = findViewById(R.id.edit_first);
