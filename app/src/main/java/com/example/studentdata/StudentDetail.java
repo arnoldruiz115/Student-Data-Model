@@ -40,7 +40,7 @@ public class StudentDetail extends AppCompatActivity {
         lName.setText("Last Name: " + student.getLastName());
         CWID.setText("CWID: " + student.getCWID());
 
-        ArrayList<CourseEnrollment> ce = student.getCourses();
+        ArrayList<CourseEnrollment> ce = new StudentDB(this).retrieveCourses(student.getCWID());
 
 
         for (int i = 0; i < ce.size(); i++){

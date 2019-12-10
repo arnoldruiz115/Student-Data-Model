@@ -12,7 +12,7 @@ public class StudentDB {
 
 
     protected ArrayList<Student> students;
-    SQLiteDatabase studentSQLDB;
+    public SQLiteDatabase studentSQLDB;
 
     /*
     static public StudentDB getInstance(){
@@ -27,32 +27,9 @@ public class StudentDB {
         File dbFile = context.getDatabasePath("student.db");
         studentSQLDB = SQLiteDatabase.openOrCreateDatabase(dbFile, null);
 
+        new Student().createTable(studentSQLDB);
+        new CourseEnrollment().createTable(studentSQLDB);
 
-        /*
-        Student s = new Student("James", "Harden", "192845");
-        ArrayList<CourseEnrollment> courses = new ArrayList<>();
-        courses.add(new CourseEnrollment("CPSC 471", "A"));
-        courses.add(new CourseEnrollment("CPSC 411", "B"));
-        courses.add(new CourseEnrollment("CPSC 412", "A"));
-        s.setCourses(courses);
-        studentList.add(s);
-
-        s = new Student("Kyle", "Kuzma", "196340");
-        courses = new ArrayList<>();
-        courses.add(new CourseEnrollment("CPSC 481", "C"));
-        courses.add(new CourseEnrollment("CPSC 421", "B"));
-        s.setCourses(courses);
-        studentList.add(s);
-
-        s = new Student("LeBron", "James", "196340");
-        courses = new ArrayList<>();
-        courses.add(new CourseEnrollment("CPSC 481", "C"));
-        courses.add(new CourseEnrollment("CPSC 420", "B"));
-
-        s.setCourses(courses);
-        studentList.add(s);
-        setStudents(studentList);
-        */
     }
 
     public ArrayList<Student> retrieveStudentObjects(){
@@ -68,7 +45,21 @@ public class StudentDB {
         return students;
     }
 
+    public ArrayList<CourseEnrollment> retrieveCourses(String CWID){
+        ArrayList<CourseEnrollment> courses = new ArrayList<>();
+        Cursor c = studentSQLDB.query("Courses", null, "Student=?", new String[]{CWID}, null, null, null);
+        if (c.getCount() > 0){
+            while (c.moveToNext()){
+                CourseEnrollment courseObj = new CourseEnrollment();
+                courseObj.initFrom(studentSQLDB, c);
+                courses.add(courseObj);
+            }
+        }
+        return courses;
+    }
+
     public ArrayList<Student> getStudents() {
+        setStudents(retrieveStudentObjects());
         return students;
     }
 

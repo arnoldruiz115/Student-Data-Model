@@ -34,6 +34,7 @@ public class AddStudentActivity extends AppCompatActivity {
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
+        final StudentDB studentDB = new StudentDB(this);
         createAddCourse();
 
 
@@ -43,6 +44,7 @@ public class AddStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //ArrayList<Student> currentList = StudentDB.getInstance().getStudents();
+                ArrayList<Student> currentList = studentDB.getStudents();
 
 
                 EditText editF = findViewById(R.id.edit_first);
@@ -66,13 +68,16 @@ public class AddStudentActivity extends AppCompatActivity {
                     String course = editCourse.getText().toString();
                     String grade = editGrade.getText().toString();
 
-                    CourseEnrollment c = new CourseEnrollment(course, grade);
+                    CourseEnrollment c = new CourseEnrollment(course, grade, CWID);
                     courses.add(c);
                 }
 
                 newStudent.setCourses(courses);
+                newStudent.insert(studentDB.studentSQLDB);
+
                 currentList.add(newStudent);
-                StudentDB.getInstance().setStudents(currentList);
+                //StudentDB.getInstance().setStudents(currentList);
+                studentDB.setStudents(currentList);
 
                 finish();
             }

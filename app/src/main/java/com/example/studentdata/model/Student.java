@@ -45,6 +45,7 @@ public class Student extends PersistentObject {
     }
 
     public ArrayList<CourseEnrollment> getCourses() {
+
         return courses;
     }
 
